@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book - Téléchargement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            flex: 1;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+        }
+        .download-section {
+            margin-bottom: 30px;
+        }
+        .download-section h2 {
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 24px;
+            background: #1a1a1a;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border: none;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+            text-align: center;
+        }
+        .download-btn:hover {
+            background: #333;
+        }
+        .download-info {
+            font-size: 13px;
+            color: #999;
+            margin-top: 6px;
+        }
+        .info-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+        }
+        .info-section h3 {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .info-section p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+        }
+        .info-section ul {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.7;
+            margin-left: 20px;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>My Book</h1>
+        
+        <div class="download-section">
+            <h2>Android</h2>
+            <a href="https://github.com/Deogratiasdev/app/raw/main/releases/MyBook.apk" download class="download-btn">Télécharger APK</a>
+            <p class="download-info">68.6 MB • Version 1.0.0</p>
+        </div>
+        
+        <div class="download-section">
+            <h2>Windows</h2>
+            <a href="https://github.com/Deogratiasdev/app/raw/main/releases/MyBook_Setup.exe" download class="download-btn">Télécharger Installateur</a>
+            <p class="download-info">36.2 MB • Version 1.0.0</p>
+        </div>
+        
+        <div class="info-section">
+            <h3>Pourquoi l'APK est plus lourd ?</h3>
+            <p>L'APK Android est plus volumineux que l'installateur Windows car il inclut:</p>
+            <ul>
+                <li>Moteur Flutter runtime (~20 MB)</li>
+                <li>Icônes FontAwesome (~4 MB)</li>
+                <li>Polices système (~2 MB)</li>
+                <li>Assets et ressources (~5 MB)</li>
+                <li>Bibliothèques natives Android (~10 MB)</li>
+                <li>Code Dart compilé (~5 MB)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2026 My Book
+    </div>
+</body>
+</html>

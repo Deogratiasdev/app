@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book - Téléchargement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        
+        /* Hero section avec image en background inclinee */
+        .hero {
+            position: relative;
+            min-height: 75vh;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 85%;
+            background: url('image.png') center top / cover no-repeat;
+            transform: skewY(-3deg);
+            transform-origin: top left;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,107,0,0.15) 0%, rgba(255,140,0,0.1) 50%, transparent 100%);
+            transform: skewY(-3deg);
+            transform-origin: top left;
+        }
+        
+        /* Degrade blanc commencant plus bas */
+        .hero-gradient {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 70%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.3) 30%, rgba(255,255,255,0.9) 60%, #ffffff 100%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            color: #1d1d1f;
+            text-shadow: 0 2px 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.8);
+        }
+        
+        .description {
+            font-size: 19px;
+            color: #2d2d2f;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 500;
+            text-shadow: 0 1px 10px rgba(255,255,255,0.95), 0 0 20px rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.7);
+            padding: 20px 24px;
+            border-radius: 16px;
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Container principal */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px 40px;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .downloads {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .download-card {
+            background: linear-gradient(135deg, #fff8f3 0%, #fff5ed 100%);
+            border: 2px solid #ff6b00;
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255,107,0,0.15);
+        }
+        
+        .download-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(255,107,0,0.25);
+        }
+        
+        .download-icon {
+            font-size: 52px;
+            color: #ff6b00;
+            filter: drop-shadow(0 2px 4px rgba(255,107,0,0.3));
+        }
+        
+        .download-content {
+            flex: 1;
+        }
+        
+        .download-content h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+        
+        .download-content p {
+            font-size: 15px;
+            color: #ff6b00;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #ff6b00 0%, #ff8533 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.4);
+        }
+        
+        .download-btn:hover {
+            background: linear-gradient(135deg, #ff8533 0%, #ffa066 100%);
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.5);
+        }
+        
+        .info-section {
+            background: linear-gradient(135deg, #fff8f3 0%, #fff5ed 100%);
+            border: 1px solid #ffd4b8;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+        
+        .info-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6b00;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-section p {
+            font-size: 15px;
+            color: #3d3d3f;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        
+        .info-section ul {
+            font-size: 15px;
+            color: #3d3d3f;
+            line-height: 2;
+            margin-left: 24px;
+        }
+        
+        .info-section li {
+            position: relative;
+        }
+        
+        .info-section li::marker {
+            color: #ff6b00;
+        }
+        
+        /* Footer avec lierre */
+        .footer-section {
+            position: relative;
+            background: linear-gradient(to bottom, #ffffff 0%, #f8fff8 30%, #f0f8f0 100%);
+            padding: 60px 0 40px;
+            margin-top: 40px;
+        }
+        
+        .ivy-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            overflow: hidden;
+            opacity: 0.4;
+        }
+        
+        .ivy-decoration svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 24px;
+        }
+        
+        .footer-brand {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff6b00;
+            margin-bottom: 12px;
+        }
+        
+        .footer-text {
+            font-size: 15px;
+            color: #6e6e73;
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .downloads {
+                flex-direction: row;
+            }
+            .download-card {
+                flex: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 65vh;
+            }
+            
+            .hero-bg {
+                height: 80%;
+                transform: skewY(-2deg);
+            }
+            
+            .hero-overlay {
+                transform: skewY(-2deg);
+            }
+            
+            .hero-content {
+                padding: 40px 20px 20px;
+            }
+            
+            h1 {
+                font-size: 36px;
+                letter-spacing: -1px;
+            }
+            
+            .description {
+                font-size: 16px;
+                padding: 16px 20px;
+                line-height: 1.6;
+            }
+            
+            .main-container {
+                padding: 0 16px 30px;
+            }
+            
+            .download-card {
+                padding: 24px;
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            
+            .download-icon {
+                font-size: 44px;
+            }
+            
+            .download-content h2 {
+                font-size: 20px;
+            }
+            
+            .download-btn {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+            
+            .info-section {
+                padding: 24px;
+            }
+            
+            .info-section h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-gradient"></div>
+        <div class="hero-content">
+            <h1>My Book</h1>
+            <p class="description">L'application qui vous permet de prendre vos notes, stocker vos mots de passe, vos cours, vos sections et vos médias, et de synchroniser le tout sans les perdre entre votre mobile et votre PC via le cloud.</p>
+        </div>
+    </section>
+    
+    <div class="main-container">
+        <div class="downloads">
+            <div class="download-card">
+                <div class="download-icon">
+                    <i class="fab fa-android"></i>
+                </div>
+                <div class="download-content">
+                    <h2>Android</h2>
+                    <p>68.6 MB • Version 1.0.0</p>
+                    <a href="https://github.com/Deogratiasdev/app/raw/main/releases/MyBook.apk" download class="download-btn"><i class="fas fa-download"></i> Installer</a>
+                </div>
+            </div>
+            
+            <div class="download-card">
+                <div class="download-icon">
+                    <i class="fab fa-windows"></i>
+                </div>
+                <div class="download-content">
+                    <h2>Windows</h2>
+                    <p>36.2 MB • Version 1.0.0</p>
+                    <a href="https://github.com/Deogratiasdev/app/raw/main/releases/MyBook_Setup.exe" download class="download-btn"><i class="fas fa-download"></i> Installer</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3><i class="fas fa-info-circle"></i> Pourquoi l'APK est plus lourd ?</h3>
+            <p>L'APK Android est plus volumineux car il doit inclure tout ce dont l'application a besoin, alors que Windows utilise les composants système déjà présents :</p>
+            <ul>
+                <li><strong>Moteur Flutter runtime (~20 MB)</strong> - Android doit l'inclure, Windows l'optimise</li>
+                <li><strong>Icônes FontAwesome (~4 MB)</strong> - Inclues dans l'APK, Windows les partage</li>
+                <li><strong>Polices système (~2 MB)</strong> - Android les inclut, Windows utilise celles du système</li>
+                <li><strong>Assets et ressources (~5 MB)</strong></li>
+                <li><strong>Bibliothèques natives Android (~10 MB)</strong> - Windows utilise les bibliothèques système</li>
+                <li><strong>Code Dart compilé (~5 MB)</strong></li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer class="footer-section">
+        <div class="ivy-decoration">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="ivyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#228b22;stop-opacity:0.6" />
+                        <stop offset="50%" style="stop-color:#32cd32;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#228b22;stop-opacity:0.6" />
+                    </linearGradient>
+                </defs>
+                <path d="M0,120 L0,80 Q50,60 100,75 T200,70 T300,80 T400,65 T500,75 T600,70 T700,80 T800,60 T900,75 T1000,70 T1100,80 T1200,65 L1200,120 Z" fill="url(#ivyGrad)"/>
+                <path d="M0,120 L0,90 Q60,75 120,85 T240,80 T360,90 T480,75 T600,85 T720,80 T840,90 T960,75 T1080,85 T1200,80 L1200,120 Z" fill="#228b22" opacity="0.4"/>
+                <ellipse cx="100" cy="75" rx="8" ry="5" fill="#32cd32" opacity="0.7"/>
+                <ellipse cx="300" cy="80" rx="6" ry="4" fill="#32cd32" opacity="0.6"/>
+                <ellipse cx="500" cy="75" rx="7" ry="5" fill="#32cd32" opacity="0.7"/>
+                <ellipse cx="700" cy="80" rx="6" ry="4" fill="#32cd32" opacity="0.6"/>
+                <ellipse cx="900" cy="75" rx="8" ry="5" fill="#32cd32" opacity="0.7"/>
+                <ellipse cx="1100" cy="80" rx="6" ry="4" fill="#32cd32" opacity="0.6"/>
+            </svg>
+        </div>
+        <div class="footer-content">
+            <div class="footer-brand">My Book</div>
+            <p class="footer-text">© 2026 My Book - Version finale</p>
+        </div>
+    </footer>
+</body>
+</html>

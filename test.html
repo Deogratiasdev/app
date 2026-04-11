@@ -111,13 +111,13 @@
         
         <div class="info-section">
             <h3>Pourquoi l'APK est plus lourd ?</h3>
-            <p>L'APK Android est plus volumineux que l'installateur Windows car il inclut:</p>
+            <p>L'APK Android est plus volumineux car il doit inclure tout ce dont l'app a besoin, alors que Windows utilise les composants système déjà présents:</p>
             <ul>
-                <li>Moteur Flutter runtime (~20 MB)</li>
-                <li>Icônes FontAwesome (~4 MB)</li>
-                <li>Polices système (~2 MB)</li>
+                <li>Moteur Flutter runtime (~20 MB) - Android doit l'inclure, Windows l'optimise</li>
+                <li>Icônes FontAwesome (~4 MB) - Inclues dans l'APK, Windows les partage</li>
+                <li>Polices système (~2 MB) - Android les inclut, Windows utilise celles du système</li>
                 <li>Assets et ressources (~5 MB)</li>
-                <li>Bibliothèques natives Android (~10 MB)</li>
+                <li>Bibliothèques natives Android (~10 MB) - Windows utilise les bibliothèques système</li>
                 <li>Code Dart compilé (~5 MB)</li>
             </ul>
         </div>
